@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: qram-project
+Version: 0.1.0
+Summary: Quantum RAM implementation project
+Author: Tuo Nome
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
