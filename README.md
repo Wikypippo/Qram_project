@@ -7,6 +7,7 @@ Questo progetto esplora l'implementazione e la simulazione della **Quantum RAM (
 qram_project/
 ├── qram/
 │   ├── naive.py               # Implementazione QRAM modello Naive
+│   ├── fanout.py              # Implementazione QRAM modello Fanout
 │   ├── bucket_brigade.py      # Implementazione QRAM modello Bucket Brigade
 │
 ├── utils/
@@ -23,8 +24,8 @@ qram_project/
 
 
 ## 🚀 Funzionalità
-
 - ✅ Simulazione di QRAM in stile Naive
+- ✅ Simulazione di QRAM in stile Fanout
 - ✅ Supporto per oracoli a più bit tramite `Make_Oracle`
 - ✅ Supporto per test automatici con `unittest`
 - ✅ Simulazione tramite `Qiskit` su backend locali
