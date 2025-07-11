@@ -35,27 +35,25 @@ def fanout_qram(data_map):
     # Fase 3: Scrittura nel Bus e misurazione
     
     # path per l'indirizzo 00
+    qc.append(Make_Oracle('001'),[switch[0],switch[1],memory[0],bus])
+    '''
     qc.x(switch[0])
     qc.x(switch[1])
     qc.mcx([switch[0],switch[1],memory[0]],bus)
     qc.x(switch[0])
     qc.x(switch[1])
     qc.barrier()
+    '''
     
     # path per l'indirizzo 01
-    qc.x(switch[0])
-    qc.mcx([switch[0],switch[1],memory[1]],bus)
-    qc.x(switch[0])
-    qc.barrier()
+    qc.append(Make_Oracle('011'),[switch[0],switch[1],memory[1],bus])
+
     
     # path per l'indirizzo 10
-    qc.x(switch[2])
-    qc.mcx([switch[0],switch[2],memory[2]],bus)
-    qc.x(switch[2])
-    qc.barrier()
+    qc.append(Make_Oracle('101'),[switch[0],switch[2],memory[2],bus])
     
     # path per l'indirizzo 11
-    qc.mcx([switch[0],switch[2],memory[3]],bus)
+    qc.append(Make_Oracle('111'),[switch[0],switch[2],memory[3],bus])
     qc.barrier()
     
     qc.measure(addr[:] + bus[:],cr[::-1])    # Misurazione
