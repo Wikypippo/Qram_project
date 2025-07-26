@@ -9,6 +9,7 @@ qram_project/
 │   ├── naive.py               # Implementazione QRAM modello Naive
 │   ├── fanout.py              # Implementazione QRAM modello Fanout
 │   ├── bucket_brigade.py      # Implementazione QRAM modello Bucket Brigade
+│   ├── flip_flop.py           # Implementazione QRAM modello Bucket Brigade
 │
 ├── utils/
 │   ├── Oracles.py             # Funzione Make_Oracle per creare oracoli quantistici
@@ -26,6 +27,8 @@ qram_project/
 ## 🚀 Funzionalità
 - ✅ Simulazione di QRAM in stile Naive
 - ✅ Simulazione di QRAM in stile Fanout
+- ✅ Simulazione di QRAM in stile Bucket-Brigade
+- ✅ Simulazione di QRAM in stile Flip-Flop
 - ✅ Supporto per oracoli a più bit tramite `Make_Oracle`
 - ✅ Supporto per test automatici con `unittest`
 - ✅ Simulazione tramite `Qiskit` su backend locali
