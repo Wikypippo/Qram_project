@@ -45,9 +45,26 @@ def flip_flop_qram(data_map):
     return qc
 
 
-import numpy as np
+def postselection(results):
+    # Filtra solo i risultati con chiavi stringa valide
+    valid_results = {k: v for k, v in results.items() if isinstance(k, str)}
 
-def postselection(results, normalizzazione, approssima=False, metodo='round'):
+    # Post-selezione: registro == 1 (ultimo bit == '1')
+    postselected = {k[:-1]: v for k, v in valid_results.items() if k[-1] == '1'}
+    
+    # Conteggio
+    totale = sum(valid_results.values())
+    n_selezionati = sum(postselected.values())
+    
+    # Protezione contro divisione per zero
+    if totale == 0:
+        return 0.0
+    
+    frequenza = n_selezionati / totale
+    return frequenza
+
+
+def recostruction(results, normalizzazione, approssima=False, metodo='round'):
     # 1. Post-selezione: tieni solo i risultati con register = 1 (ultimo bit)
     postselected = {k[:-1]: v for k, v in results.items() if k[-1] == '1'}
 
