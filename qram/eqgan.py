@@ -11,10 +11,17 @@ from qiskit_aer.noise import NoiseModel, depolarizing_error, thermal_relaxation_
 def generate_state(theta_g):
     qc = QuantumCircuit(2)
     qc.ry(theta_g[0], 0)
-    qc.ry(theta_g[1], 1)
+    qc.rz(theta_g[1], 0)  # Aggiungi rotazioni Z
+    qc.ry(theta_g[2], 1)
+    qc.rz(theta_g[3], 1)
+    
     qc.cx(0, 1)
-    qc.ry(theta_g[2], 0)
-    qc.ry(theta_g[3], 1)
+    
+    qc.ry(theta_g[4], 0)
+    qc.rz(theta_g[5], 0)
+    qc.ry(theta_g[6], 1) 
+    qc.rz(theta_g[7], 1)
+    
     return qc
 
 def discriminator_circuit(theta_d, rho_circ, sigma_circ):
@@ -31,6 +38,9 @@ def discriminator_circuit(theta_d, rho_circ, sigma_circ):
     qc.compose(rho_circ, qubits=rho_qubits, inplace=True)
     qc.compose(sigma_circ, qubits=sigma_qubits, inplace=True)
 
+    for j in range(n):
+        qc.cz(rho_qubits[j], sigma_qubits[j])
+
     # SWAP test
     for j in range(n):
         qc.cswap(anc, rho_qubits[j], sigma_qubits[j])
@@ -45,6 +55,11 @@ def discriminator_circuit(theta_d, rho_circ, sigma_circ):
     qc.ry(theta_d[1], sigma_qubits[0])
     qc.ry(theta_d[2], rho_qubits[1])
     qc.ry(theta_d[3], sigma_qubits[1])
+    
+    qc.rz(theta_d[0], rho_qubits[0])
+    qc.rz(theta_d[1], sigma_qubits[0])
+    qc.rz(theta_d[2], rho_qubits[1])
+    qc.rz(theta_d[3], sigma_qubits[1])
     
     # Misurazione
     qc.h(anc)
