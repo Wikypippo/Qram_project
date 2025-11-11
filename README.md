@@ -43,13 +43,13 @@ Il progetto mira a:
 - Analizzare e migliorare la propagazione del segnale quantistico
 - Investigare soluzioni ottimizzate per il routing delle informazioni usando strutture quantistiche
 
-## Istalla le dipendenze con
+## Installa le dipendenze con
 
 ```bash
 - pip install -r requirements.txt
 ```
 
-## Istalla il progetto con
+## Installa il progetto con
 
 ```bash
 - pip install -e .

@@ -3,6 +3,9 @@ pyproject.toml
 setup.py
 qram/__init__.py
 qram/bucket_brigade.py
+qram/eqgan.py
+qram/fanout.py
+qram/flip_flop.py
 qram/naive.py
 qram_project.egg-info/PKG-INFO
 qram_project.egg-info/SOURCES.txt
